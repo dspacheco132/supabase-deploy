@@ -1,0 +1,35 @@
+# Environment files
+.env
+.env.*
+*.env
+
+# Database data
+volumes/db/data
+volumes/db/data/*
+
+# Backups
+dump/*.sql
+volumes/backup/dump/*.sql
+volumes/backup/cron.log
+
+# Temporary files
+supabase/.temp/
+*.tmp
+*.log
+
+# OS files
+.DS_Store
+volumes/.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Docker volumes
+volumes/storage/*
+!volumes/storage/.gitkeep

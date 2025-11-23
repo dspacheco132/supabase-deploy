@@ -1,0 +1,23 @@
+FROM node:20-alpine
+
+# Install Docker CLI and cron (needed for resolving container IPs and scheduled backups)
+RUN apk add --no-cache docker-cli dcron
+
+# Configure npm to automatically accept package installations
+RUN npm config set yes true
+
+# Pre-install Supabase CLI using npx to cache it
+# This ensures npx supabase is ready without downloading on first use
+RUN npx --yes supabase@2.58.5 --version
+
+# Set working directory
+WORKDIR /app
+
+# Copy entrypoint script
+COPY docker-entrypoint-node.sh /docker-entrypoint-node.sh
+RUN chmod +x /docker-entrypoint-node.sh
+
+# Keep container running with cron
+ENTRYPOINT ["/docker-entrypoint-node.sh"]
+CMD ["tail", "-f", "/dev/null"]
+

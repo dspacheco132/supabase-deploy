@@ -1,0 +1,16 @@
+[auth.email.template.confirmation]
+subject = "Email verification"
+content_path = "./supabase/templates/confirmation.html"
+
+[auth.email.template.invite]
+subject = "You've been invited to join {{ .Data.tenant_name }}"
+content_path = "./volumes/templates/invite.html"
+
+[auth.email.template.magic_link]
+subject = "Sign in to your account"
+content_path = "./volumes/templates/magic-link.html"
+
+[auth.email.template.recovery]
+subject = "Password Reset"
+content_path = "./volumes/templates/recovery.html"
+
